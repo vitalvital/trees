@@ -588,23 +588,23 @@ int main() {
         printf("\tx : Exit\n");
         printf("\tEnter your choice: ");
         ch = getchar();
-        //fflush(stdin);
+        // fflush(stdin);
 
         switch (ch) {
             case 'p':
                 perfect();
-                //fflush(stdin);
+                // fflush(stdin);
                 break;
             case 'i':
                 inverse();
                 break;
             case 'd':
                 destiny();
-                //fflush(stdin);
+                // fflush(stdin);
                 break;
             case 'c':
                 cycles();
-                //fflush(stdin);
+                // fflush(stdin);
                 break;
             case 't':
                 test();
@@ -617,7 +617,6 @@ int main() {
                 break;
         }
     } while (ch != 'x');
-//    system("PAUSE");
     return 0;
 }
 
