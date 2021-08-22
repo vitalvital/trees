@@ -476,9 +476,7 @@ void test(void) {
     printf(" Found %d cycles in %ld seconds\n", cyclesFound, t2 - t1);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Function for finding cycles
-///////////////////////////////////////////////////////////////////////////////
+/// Aliquot cycles finder
 void cycles(void) {
     char string[20];
     struct Number N;
@@ -533,7 +531,7 @@ void cycles(void) {
                 for (i = 0; i <= N.lastPrimeIndex; i++) {
                     subproduct = N.factors[i];
                     for (power = 0; power < N.powers[i]; power++)
-                        if (ULONG_LONG_MAX / subproduct > N.factors[i])    //overflow protection
+                        if (ULONG_LONG_MAX / subproduct > N.factors[i])    // overflow protection
                             subproduct *= N.factors[i];
                         else {
                             printf("\nOverflow 1");
@@ -542,7 +540,7 @@ void cycles(void) {
                         }
 
                     subproduct = (subproduct - 1) / (N.factors[i] - 1);
-                    if (ULONG_LONG_MAX / product > subproduct)    //overflow protection
+                    if (ULONG_LONG_MAX / product > subproduct)    // overflow protection
                         product *= subproduct;
                     else {
                         printf("\nOverflow 2");
