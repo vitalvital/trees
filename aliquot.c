@@ -5,33 +5,8 @@
 // #include <malloc.h>
 #include <limits.h>
 #include <time.h>
+#include "aliquot.h"
 // #include <include/gmp.h>
-
-#define BASE 10
-
-static unsigned long *Primes;
-struct Number {
-    unsigned long long a;                //number
-    char ch[20];            // number as a string
-//    int is_factored;
-    unsigned long long factors[50];
-    int powers[50];
-    int lastPrimeIndex;
-};
-
-void generatePrimes(unsigned int limit);
-
-void inverse(void);
-
-void factor(struct Number *N);
-
-void perfect(void);
-
-void printNumber(struct Number *N);
-
-void destiny(void);
-
-void cycles(void);
 
 void printNumber(struct Number *N) {
     int i;
@@ -129,7 +104,7 @@ void perfect(void) {
     int i;
     int power;
     unsigned long long subproduct;
-    //unsigned long long result;
+    // unsigned long long result;
     char ch[20];
     unsigned long long product = 1;
     char* input_end_ptr;
@@ -137,8 +112,8 @@ void perfect(void) {
 
     printf("\ninput number n= ");
     scanf("%s", (char *) (&N.ch));
-    //getchar();
-    //fflush(stdin);
+    // getchar();
+    // fflush(stdin);
     if (strlen(N.ch) > 19) {
         printf("\nThe number is too big\n");
         return;
