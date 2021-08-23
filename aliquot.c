@@ -107,7 +107,7 @@ void perfect(void) {
     // unsigned long long result;
     char ch[20];
     unsigned long long product = 1;
-    char* input_end_ptr;
+    char *input_end_ptr;
 
 
     printf("\ninput number n= ");
@@ -176,7 +176,7 @@ void destiny(void) {
     unsigned long long subproduct;
     char ch;
     unsigned long long product;
-    char* input_end_ptr;
+    char *input_end_ptr;
 
     printf("\ninput number n= ");
     scanf("%s", N.ch);
@@ -324,7 +324,7 @@ void test(void) {
 //    unsigned long long product;
     time_t t1, t2;
     time(&t1);
-    char* input_end_ptr;
+    char *input_end_ptr;
 
     unsigned long long sum;
     unsigned long long factor1;
@@ -470,7 +470,7 @@ void cycles(void) {
     unsigned long long product;
     time_t t1, t2;
     time(&t1);
-    char* input_end_ptr;
+    char *input_end_ptr;
 
     printf("\ninput cycle = ");
 //    scanf("%d", &cycle);
