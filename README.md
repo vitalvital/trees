@@ -1,2 +1,2 @@
 # trees
-Aliquote Trees
+Aliquot Trees
