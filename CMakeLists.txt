@@ -3,6 +3,9 @@ project(trees C)
 
 set(CMAKE_C_STANDARD 11)
 
+# output executables into <root>/bin directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
 add_executable(trees
         src/aliquot.c src/aliquot.h)
 
