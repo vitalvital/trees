@@ -25,16 +25,11 @@ void printNumber(struct Number *N) {
             printf("*");
     }
     printf("\b ");
-
-
-
 }
 
 void generatePrimes(unsigned int limit) {
     time_t t1, t2;
     time(&t1);
-
-
 
     char *yn;        //prime - not prime flag
     int pix;        //number of primes
@@ -104,10 +99,6 @@ void factor(struct Number *N) {
         N->lastPrimeIndex = ii - 1;
 }
 
-
-
-
-
 void perfect(void) {
     struct Number N;
     int i;
@@ -118,13 +109,12 @@ void perfect(void) {
     unsigned long long product = 1;
     char *input_end_ptr;
 
-
-    printf("\ninput number n= ");
+    printf("\ninput number n = ");
     scanf("%s", (char *) (&N.ch));
     // getchar();
     // fflush(stdin);
     if (strlen(N.ch) > 19) {
-        printf("\nThe number is too big\n");
+        printf("\nThe number is too big.\n");
         return;
     }
 //	N.a = _atoi64(N.ch);
@@ -173,8 +163,6 @@ void perfect(void) {
     // _ui64toa( product, ch, 10);
     sprintf(ch, "%lld", product);   // TODO - refactor 'ch' misnomer
     printf("\n%s", ch);
-
-
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -187,12 +175,12 @@ void destiny(void) {
     unsigned long long product;
     char *input_end_ptr;
 
-    printf("\ninput number n= ");
+    printf("\ninput number n = ");
     scanf("%s", N.ch);
     //getchar();
     fflush(stdin);
     if (strlen(N.ch) > 19) {
-        printf("\nThe number is too big\n");
+        printf("\nThe number is too big.\n");
         return;
     }
 //    N.a = atoll(N.ch);
@@ -211,7 +199,7 @@ void destiny(void) {
         factor(&N);
         printNumber(&N);
         if (strlen(N.ch) > 18) {
-            printf("\nThe number is getting too big. Can no longer guarantee accuracy\n");
+            printf("\nThe number is getting too big. Can no longer guarantee accuracy.\n");
             return;
         }
         product = 1;
@@ -286,13 +274,10 @@ void destiny(void) {
                             }
                         }
                     }
-
                 }
-
             }
             N.a = sum - N.a;
         }
-
 
         j++;
 
@@ -307,8 +292,6 @@ void destiny(void) {
                 return;
         }
     }
-
-
 }
 
 void inverse(void) {
@@ -347,7 +330,6 @@ void test(void) {
 //    unsigned long long factor9;
     int i1, i2, i3, i4, i5, i6, i7, i8, p1, p2, p3, p4, p5, p6, p7, p8;
 
-
     printf("\ninput cycle = ");
     scanf("%s", string);
 //    scanf("%d", &cycle);
@@ -377,11 +359,12 @@ void test(void) {
             if (N.a == 1)
                 break;
             if (strlen(N.ch) > 18) {
-                printf("\nThe number is getting too big. Can no longer guarantee accuracy\n");
+                printf("\nThe number is getting too big. Can no longer guarantee accuracy.\n");
                 break;
             }
             // product = 1;
             sum = 1;
+            // TODO - refactor into a recursive solution
             for (i1 = 0; i1 <= N.lastPrimeIndex; i1++) {
                 factor1 = 1;
                 for (p1 = 1; p1 <= N.powers[i1]; p1++) {
@@ -465,37 +448,31 @@ void cycles(void) {
     char string[20];
     struct Number N;
     int i, k;
-    long cycle;
+    unsigned long cycle;
     int cyclesFound = 0;
     unsigned long long beginning;
 
     unsigned long long end;
     unsigned long long l;
-//    char string[20];
-//    char ch1[20];
     int power;
     unsigned long long subproduct;
-//    char ch;
     unsigned long long product;
     time_t t1, t2;
-    time(&t1);
     char *input_end_ptr;
 
     printf("\ninput cycle = ");
-//    scanf("%d", &cycle);
     scanf("%s", string);
-    cycle = strtol(string, &input_end_ptr, BASE);
+    cycle = strtoul(string, &input_end_ptr, BASE);
 
     printf("\ninput beginning = ");
-//    beginning = atoll(string);
     scanf("%s", string);
-    beginning = strtoll(string, &input_end_ptr, BASE);
+    beginning = strtoull(string, &input_end_ptr, BASE);
 
     printf("\ninput end = ");
-//    end = _atoi64(string);
-//    scanf("%lld", &end);
     scanf("%s", string);
-    end = strtoll(string, &input_end_ptr, BASE);
+    end = strtoull(string, &input_end_ptr, BASE);
+
+    time(&t1);  // start timer
     struct Number *social;
     social = (struct Number *) calloc(cycle + 1, sizeof(struct Number));
 
@@ -547,9 +524,8 @@ void cycles(void) {
         }
     }
     time(&t2);
-    printf(" Found %d primes in %ld seconds\n", cyclesFound, t2 - t1);
+    printf(" Found %d %ld-cycles in %ld seconds\n", cyclesFound, cycle, t2 - t1);
 }
-
 
 int main() {
     int ch;
@@ -557,9 +533,7 @@ int main() {
 
     generatePrimes(INT_MAX / 16);
 
-
     printf("\nAliquot Calculator\n");
-
 
     do {
         printf("\n\tp : Perfectness\n");
@@ -570,23 +544,23 @@ int main() {
         printf("\tx : Exit\n");
         printf("\tEnter your choice: ");
         ch = getchar();
-        // fflush(stdin);
+        fflush(stdin);
 
         switch (ch) {
             case 'p':
                 perfect();
-                // fflush(stdin);
+                fflush(stdin);
                 break;
             case 'i':
                 inverse();
                 break;
             case 'd':
                 destiny();
-                // fflush(stdin);
+                fflush(stdin);
                 break;
             case 'c':
                 cycles();
-                // fflush(stdin);
+                fflush(stdin);
                 break;
             case 't':
                 test();
@@ -601,4 +575,3 @@ int main() {
     } while (ch != 'x');
     return 0;
 }
-
