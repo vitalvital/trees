@@ -31,8 +31,12 @@ void generatePrimes(unsigned int limit) {
     time_t t1, t2;
     time(&t1);
 
-    char *yn;        //prime - not prime flag
-    int pix;        //number of primes
+
+    clock_t start = clock();
+
+
+    char *yn;   // prime - not prime flag
+    int pix;    // number of primes
     unsigned long long i;
     unsigned long long k;
     unsigned long long prime;
@@ -59,7 +63,7 @@ void generatePrimes(unsigned int limit) {
         if (yn[i] == '1') Primes[pix++] = i + i + 3;
     Primes[pix] = 0;
     time(&t2);
-    printf(" Generated %d primes in %ld seconds\n", pix, t2 - t1);
+    printf(" Generated %d primes in %f seconds\n", pix, ((double)(clock() - start)) / CLOCKS_PER_SEC);
 }
 
 void factor(struct Number *N) {
