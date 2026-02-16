@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-// #include <malloc.h>
 #include <limits.h>
 #include <time.h>
 #include "aliquot.h"
@@ -28,9 +27,8 @@ void printNumber(struct Number *N) {
 }
 
 void generatePrimes(unsigned int limit) {
-    time_t t1, t2;
-    time(&t1);
-
+//    time_t t1, t2;
+//    time(&t1);
 
     clock_t start = clock();
 
@@ -42,28 +40,29 @@ void generatePrimes(unsigned int limit) {
     unsigned long long prime;
 
     limit = (limit + 1) / 2;
-    yn = (char *) calloc(limit, sizeof(int));
+    yn = (char *) calloc(limit, sizeof(char));
     pix = 1;
-    for (i = 0; i < limit; i++)
-        yn[i] = '1';
 
     for (i = 0; i < limit; i++)
-        if (yn[i] == '1') {
+        if (!yn[i]) {
             prime = i + i + 3;
-            for (k = i + prime; k < limit; k += prime)
-                yn[k] = '0';
+            for (k = i + prime; k < limit; k += prime) {
+                yn[k] = 1;
+            }
             pix++;
         }
 
-    Primes = (unsigned long *) calloc(pix + 2, sizeof(unsigned long));
+    Primes = (unsigned long *) malloc((pix + 2) * sizeof(unsigned long));
 
     Primes[0] = 2;
     pix = 1;
     for (i = 0; i < limit; i++)
-        if (yn[i] == '1') Primes[pix++] = i + i + 3;
+        if (!yn[i]) {
+            Primes[pix++] = i + i + 3;
+        }
     Primes[pix] = 0;
-    time(&t2);
-    printf(" Generated %d primes in %f seconds\n", pix, ((double)(clock() - start)) / CLOCKS_PER_SEC);
+//    time(&t2);
+    printf("Generated %d primes in %f seconds\n", pix, ((double)(clock() - start)) / CLOCKS_PER_SEC);
 }
 
 void factor(struct Number *N) {
@@ -533,9 +532,10 @@ void cycles(void) {
 
 int main() {
     int ch;
-    printf("\n\tGenerating Primes.");
+    printf("Generating Primes.\n");
+    fflush(stdout);
 
-    generatePrimes(INT_MAX / 16);
+    generatePrimes(INT_MAX);
 
     printf("\nAliquot Calculator\n");
 
